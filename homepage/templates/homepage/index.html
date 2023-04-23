@@ -1,0 +1,18 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+<title>{% block title %}{{ block.super }} | Homepage{% endblock title %} </title>
+
+{% block content %}
+
+    {% for codice in codici %}
+    <h3>obj.code : {{codice.code}} </h3>
+    {% if codice.code_img %}
+    <h3>obj.img : <img src="{{ codice.code_img.url }}" alt="{{codice.code}}_img"></h3>
+    {% else %}
+    <h3>obj.img : <img src="{% static '\img\img_non_disponibile\Immagine_non_disponibile.jpg' %}" alt="{{codice.code}}_img"></h3>
+    {% endif %}
+    {% endfor %}
+
+{% endblock content %}
