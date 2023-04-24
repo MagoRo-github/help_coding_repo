@@ -6,13 +6,14 @@
 
 {% block content %}
 
-    {% for codice in codici %}
+    {% comment %} {% for codice in codici %}
     <h3>obj.code : {{codice.code}} </h3>
     {% if codice.code_img %}
-    <h3>obj.img : <img src="{{ codice.code_img.url }}" alt="{{codice.code}}_img"></h3>
+    <h3>obj.img : <img class="img_homepage" src="{{ codice.code_img.url }}" alt="{{codice.code}}_img"></h3>
     {% else %}
-    <h3>obj.img : <img src="{% static '\img\img_non_disponibile\Immagine_non_disponibile.jpg' %}" alt="{{codice.code}}_img"></h3>
+    <h3>obj.img : <img class="img_homepage" src="{% static '\img\img_non_disponibile\Immagine_non_disponibile.jpg' %}" alt="{{codice.code}}_img"></h3>
     {% endif %}
-    {% endfor %}
+    {% endfor %} {% endcomment %}
+    {% include 'homepage/partials/_content_cards.html' %}
 
 {% endblock content %}
