@@ -6,7 +6,8 @@ class Coding(models.Model):
     linguaggio = models.ForeignKey(Homepage,to_field='code' ,on_delete=models.CASCADE)
     slug = models.SlugField(max_length=20, blank=True)
 
-    argomento = models.CharField(max_length=50, default='')
+    argomento = models.CharField(max_length=50, default='', unique=True)
+    slug_argomento = models.SlugField(max_length=20, blank=True)
 
     snippet = models.TextField(default='')
 
