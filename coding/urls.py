@@ -14,21 +14,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
+from . import views
 
-# importiamo il file settings
-from django.conf import settings
-# importare il metodo static
-from django.conf.urls.static import static
+app_name = 'coding'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('homepage.urls')),
-    path('coding/', include('coding.urls')),
+    path('<slug:linguaggio>/', views.CodingListView.as_view(), name="coding"),
 ]
-
-# questo è una comando di sicurezza e abilita l'utilizzo 
-# dei file statici solo se siamo in fase di sviluppo (DEBUG = True)
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

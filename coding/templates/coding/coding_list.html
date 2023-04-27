@@ -1,0 +1,38 @@
+{% extends 'homepage/base.html' %}
+
+{% load static %}
+
+<title>{% block title %}{{ block.super }} | Coding {% endblock title %} </title>
+
+{% block content %}
+
+<div class="container px-4 py-5 mh80-custom">
+    <div class="flex-shrink-0 p-3" style="width: 280px;">
+        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+        <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        {% if linguaggio.linguaggio %}
+        <span class="fs-5 fw-semibold"> {{linguaggio.linguaggio}} </span>
+        {% else %}
+        <span class="fs-5 fw-semibold"> Nessun argomento registrato per queesto linguaggio </span>
+        {% endif %}
+        
+        </a>
+        <ul class="list-unstyled ps-0">
+            {% for obj in object_list %}
+            <li class="mb-1">
+                <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
+                {{obj.argomento}}
+                </button>
+                <div class="collapse show" id="home-collapse" style="">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li>{{obj.snippet}}</li>
+                </ul>
+                </div>
+            </li>
+            {% endfor %}
+            
+        </ul>
+    </div>
+</div>
+
+{% endblock content %}
