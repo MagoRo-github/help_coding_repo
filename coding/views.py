@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic import DetailView, ListView
 from homepage.models import Homepage
 
+from django.db.models import Q
+
 from .models import Coding
 
 class CodingDetailView(DetailView):
@@ -20,7 +22,7 @@ class CodingListView(ListView):
     def get_queryset(self):
         queryset = self.request.GET.get('q')
         if queryset:
-            return Coding.objects.filter(linguaggio=queryset)
+            return Coding.objects.filter(Q(linguaggio=queryset))
             # sono stati inseriti due filtri che ricercano per codice e per name (la ricerca restituirà risultati per entrambi i filtri
         else:
             return 

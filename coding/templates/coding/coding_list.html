@@ -8,15 +8,20 @@
 
 <div class="container px-4 py-5 mh80-custom">
     <div class="flex-shrink-0 p-3" style="">
+        {% if linguaggio.linguaggio %}
+
+        <a href="{% url 'coding:coding' linguaggio.linguaggio %}?q={{linguaggio.linguaggio}}" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+        <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-5 fw-semibold"> {{linguaggio.linguaggio}} </span>
+        </a>
+        {% else %}
+        
         <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
         <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
-        {% if linguaggio.linguaggio %}
-        <span class="fs-5 fw-semibold"> {{linguaggio.linguaggio}} </span>
-        {% else %}
-        <span class="fs-5 fw-semibold"> Nessun argomento registrato per questo linguaggio </span>
-        {% endif %}
-        
+        <span class="fs-5 fw-semibold"> Nessun argomento registrato per questo linguaggio -> torna alla <strong>HOME</strong> </span>
         </a>
+        {% endif %}
+            
         <ul class="list-unstyled ps-0">
             {% for obj in object_list %}
             <li class="mb-1">
@@ -25,7 +30,7 @@
                 </button>
                 <div class="collapse " id="{{obj.slug_argomento}}-collapse" style="">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li class="bg-code">
+                    <li class="bg-code px-2">
                         <pre>
                             <code>
 {{obj.snippet}}
