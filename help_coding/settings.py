@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$jzv(u50k+o+@+g&c@!lb_$jnujun@aupnhv1l&oj98(5^y_jm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.9', '127.0.0.1']
 
 
 # Application definition
@@ -82,6 +82,18 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "HCDB",
+#         "USER": "roby",
+#         "PASSWORD": "querty",
+#         # "HOST": "127.0.0.1",
+#         # "PORT": "5432",
+#         # "HOST": "192.168.1.9",
+#         # "PORT": "8000",
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

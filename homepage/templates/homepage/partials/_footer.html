@@ -5,10 +5,10 @@
 
         {% for obj in nav %}
           <li class="nav-item"><a href="{% url 'coding:coding' obj.code %}?q={{obj.code}}" class="nav-link px-2 text-body-secondary">{{obj.code}}</a></li>    
-          
         {% endfor %}
 
       </ul>
+      <p class="text-center "> <a class="text-body-secondary" href="https://github.com/MagoRo-github/help_coding_repo" target="_blank"> GitHub </a> </p>
       <p class="text-center text-body-secondary">© 2023 Roby</p>
     </footer>
   </div>

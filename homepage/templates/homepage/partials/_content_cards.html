@@ -1,4 +1,5 @@
   <div class="container px-4 py-5 mh80-custom" id="custom-cards">
+    <h3 class="">Linguaggi</h3>
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       {% for codice in codici %}
       <form action="{% url 'coding:coding' codice.code%}" method="GET">
@@ -12,7 +13,28 @@
             </button>
         </div>
       
-    </form>
+      </form>
+      {% endfor %}
+
+    </div>
+
+    {% if utili %}
+    <h3 class="">Utilità</h3>
+    <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+      {% for utile in utili %}
+      <form action="{% url 'coding:coding' utile.code%}" method="GET">
+      <input style="display:none;" value="{{utile.code}}" name="q">
+      
+        <div class="col">
+            <button type="submit" class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background: url('{{utile.code_img.url}}') no-repeat center center; background-size: cover; width: 100%">
+              <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                <h3 class="mt-5 mb-4 display-6 lh-1 fw-bold text-center bg-velo"> {{utile.code}} </h3>
+              </div>
+            </button>
+        </div>
+      </form>
       {% endfor %}
     </div>
+    {% endif %}
+    
   </div>

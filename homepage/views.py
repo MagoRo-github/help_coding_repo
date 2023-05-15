@@ -8,7 +8,10 @@ class HomepageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['codici'] = Homepage.objects.all()
-        context['nav'] = Homepage.objects.all()
+        context['codici'] = Homepage.objects.filter(tipo='LN')
+        context['nav'] = Homepage.objects.filter(tipo='LN')
+
+        context['utili'] = Homepage.objects.filter(tipo='UT')
+        context['utili_NAV'] = Homepage.objects.filter(tipo='UT')
         return context
     

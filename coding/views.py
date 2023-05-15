@@ -34,7 +34,8 @@ class CodingListView(ListView):
             context['linguaggio'] = Coding.objects.filter(linguaggio=lin)[0]
         except:
             context['linguaggio'] = ''
-        context['nav'] = Homepage.objects.all()
+        context['nav'] = Homepage.objects.filter(tipo='LN')
+
  
         return context
 
