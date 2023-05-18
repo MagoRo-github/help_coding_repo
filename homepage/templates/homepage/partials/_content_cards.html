@@ -2,7 +2,7 @@
     <h3 class="">Linguaggi</h3>
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       {% for codice in codici %}
-      <form action="{% url 'coding:coding' codice.code%}" method="GET">
+      <form action="{% url 'coding:coding' codice.slug%}" method="GET">
       <input style="display:none;" value="{{codice.code}}" name="q">
       
         <div class="col">
@@ -22,7 +22,7 @@
     <h3 class="">Utilità</h3>
     <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
       {% for utile in utili %}
-      <form action="{% url 'coding:coding' utile.code%}" method="GET">
+      <form action="{% url 'coding:coding' utile.slug%}" method="GET">
       <input style="display:none;" value="{{utile.code}}" name="q">
       
         <div class="col">

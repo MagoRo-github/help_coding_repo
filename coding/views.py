@@ -39,4 +39,22 @@ class CodingListView(ListView):
  
         return context
 
-    
+class SearchCoding(ListView):
+    model = Coding
+    template_name = "coding/search_coding_list.html"
+
+    def get_queryset(self):
+        query_arg = self.request.GET.get('q_arg')
+        if query_arg:
+            print (f'Coding.objects.filter(argomento__icontains = query_arg) : {Coding.objects.filter(argomento__icontains = query_arg)}')
+            return Coding.objects.filter(Q(argomento__icontains=query_arg))
+        else:
+            print('ELSE')
+            return
+        
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+
+ 
+        return context

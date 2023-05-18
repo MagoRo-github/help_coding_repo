@@ -20,5 +20,7 @@ from . import views
 app_name = 'coding'
 
 urlpatterns = [
+    path('ricerca/', views.SearchCoding.as_view(), name="ricerca"),
     path('<slug:linguaggio>/', views.CodingListView.as_view(), name="coding"),
+    
 ]
