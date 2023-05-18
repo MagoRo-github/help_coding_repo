@@ -46,10 +46,8 @@ class SearchCoding(ListView):
     def get_queryset(self):
         query_arg = self.request.GET.get('q_arg')
         if query_arg:
-            print (f'Coding.objects.filter(argomento__icontains = query_arg) : {Coding.objects.filter(argomento__icontains = query_arg)}')
             return Coding.objects.filter(Q(argomento__icontains=query_arg))
         else:
-            print('ELSE')
             return
         
     def get_context_data(self, **kwargs):
