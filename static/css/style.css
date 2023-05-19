@@ -3,6 +3,8 @@ a{text-decoration:none ;}
 .bg-velo{background-color: rgba(0, 0, 0, .5);}
 .mh80-custom{min-height: 80vh ;}
 .bg-code{background-color: #002060; color: white;}
+.border-none{border: none;}
+.bg-none{background: none;}
 
 /* CSS side bar */
 .dropdown-toggle { outline: 0; }

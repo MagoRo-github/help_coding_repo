@@ -34,6 +34,7 @@ class CodingListView(ListView):
             context['linguaggio'] = Coding.objects.filter(linguaggio=lin)[0]
         except:
             context['linguaggio'] = ''
+        context['all_coding'] = Homepage.objects.all()
         context['nav'] = Homepage.objects.filter(tipo='LN')
 
  
@@ -45,14 +46,17 @@ class SearchCoding(ListView):
 
     def get_queryset(self):
         query_arg = self.request.GET.get('q_arg')
-        if query_arg:
+        query_lin = self.request.GET.get('q_ling')
+        if not(query_lin):
             return Coding.objects.filter(Q(argomento__icontains=query_arg))
+        elif query_arg:
+            return Coding.objects.filter(Q(argomento__icontains=query_arg)) & Coding.objects.filter(Q(linguaggio=query_lin))
         else:
             return
         
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
-
+        context['all_coding'] = Homepage.objects.all()
  
         return context

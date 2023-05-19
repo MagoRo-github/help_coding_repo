@@ -1,10 +1,19 @@
 <div class="container">
-    <div class="border-bottom">
+    <div class="d-flex flex-wrap justify-content-end py-3 mb-3 border-bottom">
         <form action="{% url 'coding:ricerca' %}" method="GET" role="search" class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Argomento" name='q_arg' >
             {% comment %} <input class="form-control me-2" type="search" placeholder="Cerca in linguaggio" name='q_ling' > {% endcomment %}
-            <button class="btn_custom" type="submit" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
+
+            <select name="q_ling" >
+                <option value=""> Linguaggio <value>
+                    <optgroup label="-------">
+                {% for cod in all_coding %}
+                    <option value="{{cod.code}}">{{cod.code}}<value>
+                {% endfor %}
+   
+            </select>
+            <button class="btn_custom border-none bg-none" type="submit" aria-label="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-1" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5"/><path d="M21 21l-5.2-5.2"/></svg>
             </button>
         </form>
     </div>
