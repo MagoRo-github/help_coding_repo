@@ -1,19 +1,33 @@
 {% load static %}
 <div class="container">
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-3 border-bottom">
+    <header class="d-flex flex-wrap justify-content-between py-3 mb-3 border-bottom">
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         {% comment %} <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg> {% endcomment %}
         <img src="{% static 'img/logo/help-coding-logo.jpg' %}" alt='help-coding-logo' class="bi me-2" width="40" height="32">
         <span class="fs-4">Help Coding</span>
       </a>
 
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
-        
-        {% for obj in nav %}
-          <li class="nav-item"><a href="{% url 'coding:coding' obj.code %}?q={{obj.code}}" class="nav-link">{{obj.code}}</a></li>
-        {% endfor %}
+      <ul class="nav nav-pills hidden">
+        {% block header_nav_list %} 
+          {% include 'homepage/partials/_header_nav_list.html' %}
+        {% endblock header_nav_list %} 
 
       </ul>
+      <div class=" mostra">
+        <button type='button' class="hamburger border bg-light" id="hamburger" >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="position-absolute bg-white border z-3 hidden" id="nav_hamb">
+          <ul class="nav d-block nav-pills">
+            {% block header_nav_list_hamburger %} 
+              {% include 'homepage/partials/_header_nav_list.html' %}
+            {% endblock header_nav_list_hamburger %} 
+    
+          </ul>
+        </div>
+      </div>
     </header>
   </div>

@@ -1,0 +1,5 @@
+<li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
+            
+{% for obj in nav %}
+    <li class="nav-item"><a href="{% url 'coding:coding' obj.code %}?q={{obj.code}}" class="nav-link">{{obj.code}}</a></li>
+{% endfor %}

@@ -4,8 +4,8 @@
             <input class="form-control me-2" type="search" placeholder="Argomento" name='q_arg' >
             {% comment %} <input class="form-control me-2" type="search" placeholder="Cerca in linguaggio" name='q_ling' > {% endcomment %}
 
-            <select name="q_ling" >
-                <option value=""> Linguaggio <value>
+            <select name="q_ling" class="form-control me-2">
+                <option value="">Tema<value>
                     <optgroup label="-------">
                 {% for cod in all_coding %}
                     <option value="{{cod.code}}">{{cod.code}}<value>
